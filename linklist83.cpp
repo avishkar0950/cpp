@@ -19,7 +19,7 @@ class Linkedlist {
     Node* head; 
   
 public: 
-    Linkedlist() { head = NULL}
+    Linkedlist() { head = NULL;}
     void insertNode(int);  
     void printList(); 
     void deleteNode(int); 
@@ -50,87 +50,51 @@ void Linkedlist::deleteNode(int nodeOffset)
         head = head->next; 
         delete temp1; 
         return; 
-    } 
-  
-     
+    }  
     while (nodeOffset-- > 1) { 
-  
-        // Update temp2 
-        temp2 = temp1; 
-  
-        // Update temp1 
+        temp2 = temp1;  
         temp1 = temp1->next; 
-    } 
-  
-    // Change the next pointer 
-    // of the previous node. 
-    temp2->next = temp1->next; 
-  
-    // Delete the node 
+    }  
+    temp2->next = temp1->next;
     delete temp1; 
 } 
-  
-// Function to insert a new node. 
 void Linkedlist::insertNode(int data) 
-{ 
-    // Create the new Node. 
+{  
     Node* newNode = new Node(data); 
-  
-    // Assign to head 
+
     if (head == NULL) { 
         head = newNode; 
         return; 
-    } 
-  
-    // Traverse till end of list 
+    }  
     Node* temp = head; 
-    while (temp->next != NULL) { 
-  
-        // Update temp 
+    while (temp->next != NULL) {  
         temp = temp->next; 
-    } 
-  
-    // Insert at the last. 
+    }  
     temp->next = newNode; 
-} 
-  
-// Function to print the 
-// nodes of the linked list. 
+}  
 void Linkedlist::printList() 
 { 
-    Node* temp = head; 
-  
-    // Check for empty list. 
+    Node* temp = head;  
     if (head == NULL) { 
         cout << "List empty" << endl; 
         return; 
-    } 
-  
-    // Traverse the list. 
+    }  
     while (temp != NULL) { 
         cout << temp->data << " "; 
         temp = temp->next; 
     } 
 } 
-  
-// Driver Code 
 int main() 
 { 
     Linkedlist list; 
-  
-    // Inserting nodes 
     list.insertNode(1); 
     list.insertNode(2); 
     list.insertNode(3); 
     list.insertNode(4); 
   
-    cout << "Elements of the list are: "; 
-  
-    // Print the list 
+    cout << "Elements of the list are: ";  
     list.printList(); 
     cout << endl; 
-  
-    // Delete node at position 2. 
     list.deleteNode(2); 
   
     cout << "Elements of the list are: "; 
